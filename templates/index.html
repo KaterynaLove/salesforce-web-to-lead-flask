@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Contact Us</title>
+  <title>Nightingale Apply</title>
   <style>
     /* ── Color tokens (Nightingale College palette) ─────────── */
     :root {
@@ -54,25 +54,35 @@
     }
 
     .header__logo {
-      font-size: 22px;
-      font-weight: 700;
-      letter-spacing: -0.25px;
-      color: var(--teal);
       text-decoration: none !important;
       display: flex;
       align-items: center;
-      gap: 8px;
+      gap: 10px;
     }
 
-    /* gold flame accent beside logo */
-    .header__logo::before {
-      content: "";
-      display: inline-block;
-      width: 4px;
-      height: 28px;
-      background: var(--gold);
-      border-radius: 2px;
-      flex-shrink: 0;
+    .logo-flame { flex-shrink: 0; }
+
+    .logo-text {
+      display: flex;
+      flex-direction: column;
+      line-height: 1.1;
+    }
+
+    .logo-name {
+      font-size: 17px;
+      font-weight: 800;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      color: var(--teal);
+    }
+
+    .logo-sub {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      color: var(--teal);
+      opacity: 0.7;
     }
 
     .header__nav {
@@ -282,26 +292,15 @@
     .footer__main::after { background: none; }
 
     .footer__logo {
-      font-size: 20px;
-      font-weight: 700;
-      color: var(--white);
-      letter-spacing: -0.25px;
       text-decoration: none !important;
       display: flex;
       align-items: center;
-      gap: 8px;
+      gap: 10px;
       margin-bottom: 12px;
     }
 
-    .footer__logo::before {
-      content: "";
-      display: inline-block;
-      width: 4px;
-      height: 24px;
-      background: var(--gold);
-      border-radius: 2px;
-      flex-shrink: 0;
-    }
+    .footer__logo .logo-name { color: var(--white); }
+    .footer__logo .logo-sub  { color: var(--white); opacity: 0.6; }
 
     .footer__tagline {
       font-size: 13px;
@@ -385,7 +384,16 @@
   ═══════════════════════════════════════════════════════════ -->
   <header class="site-header">
     <div class="header__wrap">
-      <a href="/" class="header__logo">Your Company</a>
+      <a href="/" class="header__logo">
+        <svg class="logo-flame" width="18" height="32" viewBox="0 0 18 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <path d="M9 0C7.5 5 2 10.5 2 17c0 3.9 3.1 7 7 7s7-3.1 7-7c0-3.2-1.9-6-3.8-8.2C12.5 11 11 13.2 9.8 13.5 8.6 13.8 7.5 12.5 8 11 8.5 9.5 9 0 9 0z" fill="#c8922a"/>
+          <path d="M9 24c0 0-3 3-3 5.5C6 31.4 7.3 32 9 32s3-.6 3-2.5C12 27 9 24 9 24z" fill="#a87420"/>
+        </svg>
+        <span class="logo-text">
+          <span class="logo-name">Nightingale</span>
+          <span class="logo-sub">Apply</span>
+        </span>
+      </a>
       <nav>
         <ul class="header__nav">
           <li><a href="/" class="nav-link">Home</a></li>
@@ -486,7 +494,16 @@
   <footer class="site-footer footer">
     <div class="footer__main">
       <div>
-        <a href="/" class="footer__logo">Your Company</a>
+        <a href="/" class="footer__logo">
+          <svg class="logo-flame" width="14" height="26" viewBox="0 0 18 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path d="M9 0C7.5 5 2 10.5 2 17c0 3.9 3.1 7 7 7s7-3.1 7-7c0-3.2-1.9-6-3.8-8.2C12.5 11 11 13.2 9.8 13.5 8.6 13.8 7.5 12.5 8 11 8.5 9.5 9 0 9 0z" fill="#c8922a"/>
+            <path d="M9 24c0 0-3 3-3 5.5C6 31.4 7.3 32 9 32s3-.6 3-2.5C12 27 9 24 9 24z" fill="#a87420"/>
+          </svg>
+          <span class="logo-text">
+            <span class="logo-name">Nightingale</span>
+            <span class="logo-sub">Apply</span>
+          </span>
+        </a>
         <p class="footer__tagline">Helping teams connect and grow since 2010.</p>
       </div>
       <div>
