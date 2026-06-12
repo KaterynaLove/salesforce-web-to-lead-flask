@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact Us</title>
+  <style>
+    /* ── Reset & base ───────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: "aktiv-grotesk", Arial, "Helvetica Neue", Helvetica, sans-serif;
+      font-size: 16px;
+      color: #333;
+      background: #fff;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    a { text-decoration: underline !important; color: inherit; }
+    a.btn, a.nav-link { text-decoration: none !important; }
+
+    /* ── Header ─────────────────────────────────────────────── */
+    .site-header {
+      background: #fff;
+      border-bottom: 1px solid #e0e0e0;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .header__wrap {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 64px;
+    }
+
+    .header__logo {
+      font-size: 22px;
+      font-weight: 700;
+      letter-spacing: -0.25px;
+      color: #333;
+      text-decoration: none !important;
+    }
+
+    .header__nav {
+      display: flex;
+      gap: 28px;
+      list-style: none;
+    }
+
+    .header__nav a {
+      font-size: 15px;
+      font-weight: 600;
+      color: #333;
+      text-decoration: none !important;
+      letter-spacing: 0.2px;
+    }
+
+    .header__nav a:hover { color: #e3b03b; }
+
+    /* hamburger (mobile) */
+    .nav-opener {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      padding: 4px;
+      background: none;
+      border: none;
+    }
+
+    .nav-opener span,
+    .nav-opener::before,
+    .nav-opener::after {
+      content: "";
+      display: block;
+      width: 24px;
+      height: 2px;
+      background: black !important;
+      border-radius: 2px;
+    }
+
+    @media (max-width: 1023px) {
+      .header__nav { display: none; }
+      .nav-opener { display: flex; }
+    }
+
+    @media (min-width: 1024px) {
+      .header__wrap {
+        margin: 0 10px 0 -8px;
+        padding-right: 50px;
+      }
+    }
+
+    /* ── Banner ─────────────────────────────────────────────── */
+    .banner {
+      background: #eedcb1;
+    }
+
+    .banner__text {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 13px 20px 7px 20px !important;
+      font-size: 15px;
+      font-weight: 500;
+      white-space: unset;
+      text-align: center;
+    }
+
+    @media screen and (min-width: 768px) {
+      .banner__text { text-align: left; }
+    }
+
+    /* ── Main content ───────────────────────────────────────── */
+    main {
+      flex: 1;
+      max-width: 800px;
+      width: 100%;
+      margin: 48px auto;
+      padding: 0 20px;
+    }
+
+    /* ── Form headings ──────────────────────────────────────── */
+    h2.form-heading-new {
+      font-weight: 700;
+      font-size: 42px;
+      text-align: left;
+      letter-spacing: -0.25px;
+      padding: 0 20px;
+      margin-bottom: 8px;
+      color: #333;
+    }
+
+    h3.form-heading-new {
+      font-family: "aktiv-grotesk", Arial, "Helvetica Neue", Helvetica, sans-serif;
+      font-weight: 700;
+      font-size: 22px;
+      text-align: left;
+      line-height: 1.2em;
+      letter-spacing: -0.25px;
+      padding: 10px 0 7px 0;
+      margin-bottom: 24px;
+      color: #555;
+    }
+
+    @media (max-width: 767px) {
+      h2.form-heading-new { font-size: 36px; }
+    }
+
+    /* ── Salesforce form wrapper ────────────────────────────── */
+    .sf-form-wrap {
+      background: #f3f3f3;
+      border-radius: 10px;
+      padding: 32px 28px;
+      font-size: 15px;
+    }
+
+    .sf-form-wrap label {
+      display: block;
+      font-weight: 600;
+      margin-bottom: 5px;
+      margin-top: 16px;
+      font-size: 14px;
+      letter-spacing: 0.2px;
+      color: #333;
+    }
+
+    .sf-form-wrap label:first-child { margin-top: 0; }
+
+    .sf-form-wrap input[type="text"],
+    .sf-form-wrap input[type="email"],
+    .sf-form-wrap input[type="tel"],
+    .sf-form-wrap select,
+    .sf-form-wrap textarea {
+      width: 100%;
+      padding: 10px 12px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      font-size: 15px;
+      font-family: inherit;
+      color: #333;
+      background: #fff;
+      transition: border-color 0.15s;
+    }
+
+    .sf-form-wrap input:focus,
+    .sf-form-wrap select:focus,
+    .sf-form-wrap textarea:focus {
+      outline: none;
+      border-color: #e3b03b;
+      box-shadow: 0 0 0 2px rgba(227, 176, 59, 0.2);
+    }
+
+    .sf-form-wrap textarea { resize: vertical; min-height: 100px; }
+
+    /* submit button */
+    .form__btns { margin-top: 28px; text-align: left; }
+
+    .form__btns .btn {
+      display: inline-block;
+      border: 1px solid #e3b03b;
+      background-color: #e3b03b;
+      font-weight: 600;
+      color: #000;
+      padding: 12px 32px;
+      border-radius: 6px;
+      font-size: 15px;
+      cursor: pointer;
+      letter-spacing: 0.3px;
+      text-decoration: none !important;
+      transition: background-color 0.15s, border-color 0.15s;
+    }
+
+    .form__btns .btn:hover {
+      background-color: #d4a033;
+      border-color: #d4a033;
+    }
+
+    @media (max-width: 990px) {
+      .form__btns .btn {
+        display: block;
+        width: 100%;
+        text-align: center;
+        margin-left: auto;
+        margin-right: auto;
+      }
+    }
+
+    /* ── Footer ─────────────────────────────────────────────── */
+    .site-footer {
+      background: #222;
+      color: #ccc;
+      padding: 40px 20px 28px;
+    }
+
+    .footer__main {
+      max-width: 1280px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 32px;
+    }
+
+    /* remove the pseudo-element separator */
+    .footer__main::after { background: none; }
+
+    .footer__logo {
+      font-size: 20px;
+      font-weight: 700;
+      color: #fff;
+      letter-spacing: -0.25px;
+      text-decoration: none !important;
+      display: block;
+      margin-bottom: 12px;
+    }
+
+    .footer__tagline {
+      font-size: 13px;
+      color: #aaa;
+      line-height: 1.5;
+    }
+
+    .footer__col-title {
+      font-size: 13px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      color: #fff;
+      margin-bottom: 14px;
+    }
+
+    .footer__links {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .footer__links a {
+      font-size: 14px;
+      color: #ccc;
+      text-decoration: none !important;
+      transition: color 0.15s;
+    }
+
+    .footer__links a:hover { color: #e3b03b; }
+
+    /* social links */
+    .footer .social {
+      list-style: none;
+      display: flex;
+      gap: 0;
+      flex-wrap: wrap;
+    }
+
+    .footer .social li a {
+      border: none;
+      font-size: 14px;
+      color: #ccc;
+      padding: 4px 12px;
+      text-decoration: none !important;
+      transition: color 0.15s;
+    }
+
+    .footer .social li a:hover { color: #e3b03b; }
+
+    .footer__bottom {
+      max-width: 1280px;
+      margin: 32px auto 0;
+      padding-top: 20px;
+      border-top: 1px solid #444;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .footer__copy {
+      font-size: 13px;
+      color: #888;
+    }
+
+    @media (max-width: 767px) {
+      .footer__main { grid-template-columns: 1fr; gap: 24px; }
+      .footer__bottom { flex-direction: column; align-items: flex-start; }
+
+      .footer .logo { width: 175px; }
+      .footer .social { font-size: 20px; }
+      .footer .social li { padding: 0 12px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ════════════════════════════════════════════════════════
+       HEADER
+  ═══════════════════════════════════════════════════════════ -->
+  <header class="site-header">
+    <div class="header__wrap">
+      <a href="/" class="header__logo">Your Company</a>
+      <nav>
+        <ul class="header__nav">
+          <li><a href="/" class="nav-link">Home</a></li>
+          <li><a href="#" class="nav-link">About</a></li>
+          <li><a href="#" class="nav-link">Services</a></li>
+          <li><a href="#" class="nav-link">Contact</a></li>
+        </ul>
+      </nav>
+      <button class="nav-opener" aria-label="Open menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- ════════════════════════════════════════════════════════
+       ANNOUNCEMENT BANNER (optional — remove if not needed)
+  ═══════════════════════════════════════════════════════════ -->
+  <div class="banner">
+    <div class="banner__text">
+      Questions? Our team is ready to help you get started.
+    </div>
+  </div>
+
+  <!-- ════════════════════════════════════════════════════════
+       MAIN — Salesforce Web-to-Lead Form
+  ═══════════════════════════════════════════════════════════ -->
+  <main>
+    <h2 class="form-heading-new">Get in Touch</h2>
+    <h3 class="form-heading-new">Fill out the form below and a member of our team will be in touch shortly.</h3>
+
+    <div class="sf-form-wrap">
+      <!--
+        ╔══════════════════════════════════════════════════════╗
+        ║  SALESFORCE WEB-TO-LEAD FORM                         ║
+        ║                                                      ║
+        ║  Replace the following with your actual form code    ║
+        ║  from Salesforce Setup → Web-to-Lead.                ║
+        ║                                                      ║
+        ║  Key values to swap:                                 ║
+        ║    • oid  — your Salesforce Organization ID          ║
+        ║    • retURL — redirect URL after submission          ║
+        ║    • Any custom field IDs Salesforce generated       ║
+        ╚══════════════════════════════════════════════════════╝
+      -->
+      <form action="https://webto.salesforce.com/servlet/servlet.WebToLead?encoding=UTF-8&orgId=YOUR_ORG_ID"
+            method="POST">
+
+        <input type="hidden" name="oid"    value="YOUR_ORG_ID" />
+        <input type="hidden" name="retURL" value="http://yoursite.com/thank-you" />
+
+        <!-- Debug mode: remove/comment out in production -->
+        <!-- <input type="hidden" name="debug"       value="1" /> -->
+        <!-- <input type="hidden" name="debugEmail"  value="you@example.com" /> -->
+
+        <label for="first_name">First Name</label>
+        <input id="first_name" maxlength="40" name="first_name" type="text" placeholder="Jane" required />
+
+        <label for="last_name">Last Name</label>
+        <input id="last_name" maxlength="80" name="last_name" type="text" placeholder="Doe" required />
+
+        <label for="email">Email</label>
+        <input id="email" maxlength="80" name="email" type="email" placeholder="jane@example.com" required />
+
+        <label for="phone">Phone</label>
+        <input id="phone" maxlength="40" name="phone" type="tel" placeholder="+1 (555) 000-0000" />
+
+        <label for="company">Company</label>
+        <input id="company" maxlength="40" name="company" type="text" placeholder="Acme Corp" />
+
+        <label for="title">Title</label>
+        <input id="title" maxlength="40" name="title" type="text" placeholder="Marketing Manager" />
+
+        <label for="lead_source">Lead Source</label>
+        <select id="lead_source" name="lead_source">
+          <option value="">-- select --</option>
+          <option value="Web">Web</option>
+          <option value="Phone Inquiry">Phone Inquiry</option>
+          <option value="Partner Referral">Partner Referral</option>
+          <option value="Purchased List">Purchased List</option>
+          <option value="Other">Other</option>
+        </select>
+
+        <label for="description">How can we help?</label>
+        <textarea id="description" name="description" placeholder="Tell us a bit about what you're looking for…"></textarea>
+
+        <div class="form__btns">
+          <input type="submit" class="btn" value="Submit" />
+        </div>
+      </form>
+    </div>
+  </main>
+
+  <!-- ════════════════════════════════════════════════════════
+       FOOTER
+  ═══════════════════════════════════════════════════════════ -->
+  <footer class="site-footer footer">
+    <div class="footer__main">
+      <div>
+        <a href="/" class="footer__logo">Your Company</a>
+        <p class="footer__tagline">Helping teams connect and grow since 2010.</p>
+      </div>
+      <div>
+        <p class="footer__col-title">Quick Links</p>
+        <ul class="footer__links">
+          <li><a href="#">Home</a></li>
+          <li><a href="#">About</a></li>
+          <li><a href="#">Services</a></li>
+          <li><a href="#">Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <p class="footer__col-title">Follow Us</p>
+        <ul class="social">
+          <li><a href="#" class="nav-link">Twitter</a></li>
+          <li><a href="#" class="nav-link">LinkedIn</a></li>
+          <li><a href="#" class="nav-link">Facebook</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer__bottom">
+      <span class="footer__copy">&copy; 2026 Your Company. All rights reserved.</span>
+      <ul class="footer__links" style="flex-direction:row;gap:20px;">
+        <li><a href="#">Privacy Policy</a></li>
+        <li><a href="#">Terms of Use</a></li>
+      </ul>
+    </div>
+  </footer>
+
+</body>
+</html>
