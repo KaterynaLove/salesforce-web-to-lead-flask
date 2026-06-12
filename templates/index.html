@@ -5,14 +5,27 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Contact Us</title>
   <style>
+    /* ── Color tokens (Nightingale College palette) ─────────── */
+    :root {
+      --teal:        #1d3c4b;   /* primary dark — header nav, headings, footer bg */
+      --teal-light:  #eef4f6;   /* very light teal tint — form card bg            */
+      --teal-border: #c6d9e0;   /* subtle teal border                              */
+      --gold:        #c8922a;   /* accent — buttons, hovers, focus rings           */
+      --gold-dark:   #a87420;   /* button hover                                    */
+      --cream:       #f5e6c8;   /* announcement banner bg                          */
+      --white:       #ffffff;
+      --body-text:   #1d3c4b;
+      --muted:       rgba(255,255,255,0.55);
+    }
+
     /* ── Reset & base ───────────────────────────────────────── */
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     body {
       font-family: "aktiv-grotesk", Arial, "Helvetica Neue", Helvetica, sans-serif;
       font-size: 16px;
-      color: #333;
-      background: #fff;
+      color: var(--body-text);
+      background: var(--white);
       min-height: 100vh;
       display: flex;
       flex-direction: column;
@@ -23,8 +36,8 @@
 
     /* ── Header ─────────────────────────────────────────────── */
     .site-header {
-      background: #fff;
-      border-bottom: 1px solid #e0e0e0;
+      background: var(--white);
+      border-bottom: 2px solid var(--teal-border);
       position: sticky;
       top: 0;
       z-index: 100;
@@ -44,8 +57,22 @@
       font-size: 22px;
       font-weight: 700;
       letter-spacing: -0.25px;
-      color: #333;
+      color: var(--teal);
       text-decoration: none !important;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    /* gold flame accent beside logo */
+    .header__logo::before {
+      content: "";
+      display: inline-block;
+      width: 4px;
+      height: 28px;
+      background: var(--gold);
+      border-radius: 2px;
+      flex-shrink: 0;
     }
 
     .header__nav {
@@ -57,12 +84,13 @@
     .header__nav a {
       font-size: 15px;
       font-weight: 600;
-      color: #333;
+      color: var(--teal);
       text-decoration: none !important;
       letter-spacing: 0.2px;
+      transition: color 0.15s;
     }
 
-    .header__nav a:hover { color: #e3b03b; }
+    .header__nav a:hover { color: var(--gold); }
 
     /* hamburger (mobile) */
     .nav-opener {
@@ -82,7 +110,7 @@
       display: block;
       width: 24px;
       height: 2px;
-      background: black !important;
+      background: var(--teal) !important;
       border-radius: 2px;
     }
 
@@ -100,7 +128,8 @@
 
     /* ── Banner ─────────────────────────────────────────────── */
     .banner {
-      background: #eedcb1;
+      background: var(--cream);
+      border-bottom: 1px solid #e0cfaa;
     }
 
     .banner__text {
@@ -109,6 +138,7 @@
       padding: 13px 20px 7px 20px !important;
       font-size: 15px;
       font-weight: 500;
+      color: var(--teal);
       white-space: unset;
       text-align: center;
     }
@@ -134,7 +164,7 @@
       letter-spacing: -0.25px;
       padding: 0 20px;
       margin-bottom: 8px;
-      color: #333;
+      color: var(--teal);
     }
 
     h3.form-heading-new {
@@ -146,7 +176,8 @@
       letter-spacing: -0.25px;
       padding: 10px 0 7px 0;
       margin-bottom: 24px;
-      color: #555;
+      color: var(--teal);
+      opacity: 0.75;
     }
 
     @media (max-width: 767px) {
@@ -155,7 +186,8 @@
 
     /* ── Salesforce form wrapper ────────────────────────────── */
     .sf-form-wrap {
-      background: #f3f3f3;
+      background: var(--teal-light);
+      border: 1px solid var(--teal-border);
       border-radius: 10px;
       padding: 32px 28px;
       font-size: 15px;
@@ -168,7 +200,7 @@
       margin-top: 16px;
       font-size: 14px;
       letter-spacing: 0.2px;
-      color: #333;
+      color: var(--teal);
     }
 
     .sf-form-wrap label:first-child { margin-top: 0; }
@@ -180,12 +212,12 @@
     .sf-form-wrap textarea {
       width: 100%;
       padding: 10px 12px;
-      border: 1px solid #ccc;
+      border: 1px solid var(--teal-border);
       border-radius: 6px;
       font-size: 15px;
       font-family: inherit;
-      color: #333;
-      background: #fff;
+      color: var(--teal);
+      background: var(--white);
       transition: border-color 0.15s;
     }
 
@@ -193,8 +225,8 @@
     .sf-form-wrap select:focus,
     .sf-form-wrap textarea:focus {
       outline: none;
-      border-color: #e3b03b;
-      box-shadow: 0 0 0 2px rgba(227, 176, 59, 0.2);
+      border-color: var(--gold);
+      box-shadow: 0 0 0 2px rgba(200, 146, 42, 0.2);
     }
 
     .sf-form-wrap textarea { resize: vertical; min-height: 100px; }
@@ -204,10 +236,10 @@
 
     .form__btns .btn {
       display: inline-block;
-      border: 1px solid #e3b03b;
-      background-color: #e3b03b;
+      border: 1px solid var(--gold);
+      background-color: var(--gold);
       font-weight: 600;
-      color: #000;
+      color: var(--white);
       padding: 12px 32px;
       border-radius: 6px;
       font-size: 15px;
@@ -218,8 +250,8 @@
     }
 
     .form__btns .btn:hover {
-      background-color: #d4a033;
-      border-color: #d4a033;
+      background-color: var(--gold-dark);
+      border-color: var(--gold-dark);
     }
 
     @media (max-width: 990px) {
@@ -234,8 +266,8 @@
 
     /* ── Footer ─────────────────────────────────────────────── */
     .site-footer {
-      background: #222;
-      color: #ccc;
+      background: var(--teal);
+      color: rgba(255, 255, 255, 0.8);
       padding: 40px 20px 28px;
     }
 
@@ -247,22 +279,33 @@
       gap: 32px;
     }
 
-    /* remove the pseudo-element separator */
     .footer__main::after { background: none; }
 
     .footer__logo {
       font-size: 20px;
       font-weight: 700;
-      color: #fff;
+      color: var(--white);
       letter-spacing: -0.25px;
       text-decoration: none !important;
-      display: block;
+      display: flex;
+      align-items: center;
+      gap: 8px;
       margin-bottom: 12px;
+    }
+
+    .footer__logo::before {
+      content: "";
+      display: inline-block;
+      width: 4px;
+      height: 24px;
+      background: var(--gold);
+      border-radius: 2px;
+      flex-shrink: 0;
     }
 
     .footer__tagline {
       font-size: 13px;
-      color: #aaa;
+      color: rgba(255, 255, 255, 0.55);
       line-height: 1.5;
     }
 
@@ -271,7 +314,7 @@
       font-weight: 700;
       text-transform: uppercase;
       letter-spacing: 0.8px;
-      color: #fff;
+      color: var(--gold);
       margin-bottom: 14px;
     }
 
@@ -284,12 +327,12 @@
 
     .footer__links a {
       font-size: 14px;
-      color: #ccc;
+      color: rgba(255, 255, 255, 0.75);
       text-decoration: none !important;
       transition: color 0.15s;
     }
 
-    .footer__links a:hover { color: #e3b03b; }
+    .footer__links a:hover { color: var(--gold); }
 
     /* social links */
     .footer .social {
@@ -302,19 +345,19 @@
     .footer .social li a {
       border: none;
       font-size: 14px;
-      color: #ccc;
+      color: rgba(255, 255, 255, 0.75);
       padding: 4px 12px;
       text-decoration: none !important;
       transition: color 0.15s;
     }
 
-    .footer .social li a:hover { color: #e3b03b; }
+    .footer .social li a:hover { color: var(--gold); }
 
     .footer__bottom {
       max-width: 1280px;
       margin: 32px auto 0;
       padding-top: 20px;
-      border-top: 1px solid #444;
+      border-top: 1px solid rgba(255, 255, 255, 0.15);
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -324,14 +367,12 @@
 
     .footer__copy {
       font-size: 13px;
-      color: #888;
+      color: rgba(255, 255, 255, 0.45);
     }
 
     @media (max-width: 767px) {
       .footer__main { grid-template-columns: 1fr; gap: 24px; }
       .footer__bottom { flex-direction: column; align-items: flex-start; }
-
-      .footer .logo { width: 175px; }
       .footer .social { font-size: 20px; }
       .footer .social li { padding: 0 12px; }
     }
