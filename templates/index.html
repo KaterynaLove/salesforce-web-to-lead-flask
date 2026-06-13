@@ -315,6 +315,21 @@
 
     .sf-form-wrap textarea { resize: vertical; min-height: 100px; }
 
+    /* side-by-side field pairs */
+    .form__row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin-top: 16px;
+    }
+
+    .form__field { display: flex; flex-direction: column; }
+    .form__field label { margin-top: 0; }
+
+    @media (max-width: 560px) {
+      .form__row { grid-template-columns: 1fr; }
+    }
+
     /* submit button */
     .form__btns { margin-top: 28px; text-align: left; }
 
@@ -516,49 +531,47 @@
         ║    • Any custom field IDs Salesforce generated       ║
         ╚══════════════════════════════════════════════════════╝
       -->
-      <form action="https://webto.salesforce.com/servlet/servlet.WebToLead?encoding=UTF-8&orgId=YOUR_ORG_ID"
+      <form action="https://test.salesforce.com/servlet/servlet.WebToLead?encoding=UTF-8&orgId=00Dct000004yGsP"
             method="POST">
 
-        <input type="hidden" name="oid"    value="YOUR_ORG_ID" />
-        <input type="hidden" name="retURL" value="http://yoursite.com/thank-you" />
+        <input type="hidden" name="oid"    value="00Dct000004yGsP" />
+        <input type="hidden" name="retURL" value="https://nightingale.edu" />
 
-        <!-- Debug mode: remove/comment out in production -->
-        <!-- <input type="hidden" name="debug"       value="1" /> -->
-        <!-- <input type="hidden" name="debugEmail"  value="you@example.com" /> -->
+        <!-- Debug mode: uncomment to test
+        <input type="hidden" name="debug"      value="1" />
+        <input type="hidden" name="debugEmail" value="kmartynenko@nightingale.edu" />
+        -->
 
-        <label for="first_name">First Name</label>
-        <input id="first_name" maxlength="40" name="first_name" type="text" placeholder="Jane" required />
-
-        <label for="last_name">Last Name</label>
-        <input id="last_name" maxlength="80" name="last_name" type="text" placeholder="Doe" required />
+        <div class="form__row">
+          <div class="form__field">
+            <label for="first_name">First Name</label>
+            <input id="first_name" maxlength="40" name="first_name" type="text" placeholder="Jane" required />
+          </div>
+          <div class="form__field">
+            <label for="last_name">Last Name</label>
+            <input id="last_name" maxlength="80" name="last_name" type="text" placeholder="Doe" required />
+          </div>
+        </div>
 
         <label for="email">Email</label>
         <input id="email" maxlength="80" name="email" type="email" placeholder="jane@example.com" required />
 
-        <label for="phone">Phone</label>
-        <input id="phone" maxlength="40" name="phone" type="tel" placeholder="+1 (555) 000-0000" />
-
         <label for="company">Company</label>
         <input id="company" maxlength="40" name="company" type="text" placeholder="Acme Corp" />
 
-        <label for="title">Title</label>
-        <input id="title" maxlength="40" name="title" type="text" placeholder="Marketing Manager" />
-
-        <label for="lead_source">Lead Source</label>
-        <select id="lead_source" name="lead_source">
-          <option value="">-- select --</option>
-          <option value="Web">Web</option>
-          <option value="Phone Inquiry">Phone Inquiry</option>
-          <option value="Partner Referral">Partner Referral</option>
-          <option value="Purchased List">Purchased List</option>
-          <option value="Other">Other</option>
-        </select>
-
-        <label for="description">How can we help?</label>
-        <textarea id="description" name="description" placeholder="Tell us a bit about what you're looking for…"></textarea>
+        <div class="form__row">
+          <div class="form__field">
+            <label for="city">City</label>
+            <input id="city" maxlength="40" name="city" type="text" placeholder="Salt Lake City" />
+          </div>
+          <div class="form__field">
+            <label for="state">State / Province</label>
+            <input id="state" maxlength="20" name="state" type="text" placeholder="UT" />
+          </div>
+        </div>
 
         <div class="form__btns">
-          <input type="submit" class="btn" value="Submit" />
+          <input type="submit" name="submit" class="btn" value="Submit Application" />
         </div>
       </form>
     </div>
