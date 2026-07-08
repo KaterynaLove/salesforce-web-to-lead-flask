@@ -587,11 +587,33 @@
         <div class="form__row">
           <div class="form__field">
             <label for="prev_education">Previous Education</label>
-            <input id="prev_education" maxlength="255" name="prev_education" type="text" placeholder="e.g. High School Diploma" />
+            <select id="prev_education" name="prev_education">
+              <option value="">-- select --</option>
+              <option value="High School Diploma">High School Diploma</option>
+              <option value="GED">GED / HiSET</option>
+              <option value="Some College">Some College (No Degree)</option>
+              <option value="Trade/Vocational Certificate">Trade / Vocational Certificate</option>
+              <option value="Associate's Degree">Associate's Degree</option>
+              <option value="Bachelor's Degree">Bachelor's Degree</option>
+              <option value="Master's Degree">Master's Degree</option>
+              <option value="Doctoral Degree">Doctoral Degree</option>
+              <option value="Professional Degree">Professional Degree (JD, MD, etc.)</option>
+              <option value="Other">Other</option>
+            </select>
           </div>
           <div class="form__field">
             <label for="ethnicity">Ethnicity</label>
-            <input id="ethnicity" maxlength="80" name="ethnicity" type="text" placeholder="e.g. Hispanic or Latino" />
+            <select id="ethnicity" name="ethnicity">
+              <option value="">-- select --</option>
+              <option value="Hispanic or Latino">Hispanic or Latino</option>
+              <option value="American Indian or Alaska Native">American Indian or Alaska Native</option>
+              <option value="Asian">Asian</option>
+              <option value="Black or African American">Black or African American</option>
+              <option value="Native Hawaiian or Other Pacific Islander">Native Hawaiian or Other Pacific Islander</option>
+              <option value="White">White</option>
+              <option value="Two or More Races">Two or More Races</option>
+              <option value="Prefer not to say">Prefer Not to Say</option>
+            </select>
           </div>
         </div>
 
